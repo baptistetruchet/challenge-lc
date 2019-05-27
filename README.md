@@ -41,7 +41,7 @@ Un opérateur (_Operator_) peut changer de poste pendant la journée suivant les
 
 ### Travail demandé
 
-_L'énoncé est volontairement très succinct. Nous souhaitons vous laisser le maximum de liberté sur les choix techniques._
+_L'énoncé est volontairement très succinct. Nous souhaitons vous laisser le maximum de liberté sur les choix techniques. Si les choix effectués dans le boilerplate de l'application ne vous conviennent pas, vous êtes libres et incités à les changer._
 
 Nous aimerions pouvoir tracker quel opérateur a réalisé telle action sur une pièce avant son envoi. A la fin de la journée, chaque opérateur se verra attribuer automatiquement un certain nombre de points suivant le nombre de pièces qu'il a traité. Un opérateur peut suivre l'évolution de ses points dans un dashboard personnel.
 
