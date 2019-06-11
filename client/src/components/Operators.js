@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { railsActions } from "redux-rails";
 import {
   CircularProgress,
   List,
@@ -14,6 +13,7 @@ import {
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import _ from "lodash";
+import { fetchOperators } from "../actions/operatorsActions";
 
 const styles = theme => ({
   progress: {
@@ -32,16 +32,38 @@ const styles = theme => ({
 class Operators extends Component {
   static propTypes = {
     fetchOperators: PropTypes.func,
-    operators: PropTypes.array,
-    loading: PropTypes.bool
+    operators: PropTypes.object
   };
 
+  _isMounted = false;
+
+  state = {
+    loading: false
+  };
+
+  componentWillMount() {
+    this._isMounted = true;
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   componentDidMount() {
-    this.props.fetchOperators();
+    this.fetchOperators();
+  }
+
+  fetchOperators() {
+    if (this.state.loading) return null;
+    this.setState({ loading: true });
+    this.props.fetchOperators().then(() => {
+      this._isMounted && this.setState({ loading: false });
+    });
   }
 
   render() {
-    const { classes, loading, operators } = this.props;
+    const { classes, operators } = this.props;
+    const { loading } = this.state;
 
     if (loading) {
       return (
@@ -59,14 +81,15 @@ class Operators extends Component {
               <ListItemAvatar>
                 <Avatar alt={`Avatar ID ${operator.id}`} />
               </ListItemAvatar>
-              <ListItemText inset primary={operator.attributes.name} />
+              <ListItemText inset primary={operator.name} />
             </ListItem>
           ))}
         </List>
         <Typography className={classes.todo}>
           <em>
             TODO :<br />
-            Lien vers dashboard personnel avec suivi des points
+            Lien vers dashboard personnel avec suivi des points et du nombre de
+            pièces traitées suivant le jour
           </em>
         </Typography>
       </div>
@@ -74,21 +97,12 @@ class Operators extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  operators: state.Operators.models,
-  loading: state.Operators.loading
-});
-
-const mapDispatchToProps = dispatch => ({
-  fetchOperators: () => {
-    dispatch(railsActions.index({ resource: "Operators" }));
-  }
-});
+const mapStateToProps = ({ operatorsReducer: operators }) => ({ operators });
 
 export default compose(
   connect(
     mapStateToProps,
-    mapDispatchToProps
+    { fetchOperators }
   ),
   withStyles(styles)
 )(Operators);

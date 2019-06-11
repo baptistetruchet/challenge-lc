@@ -1,1 +1,1 @@
-export { default as apiConfig } from "./api";
+export { default as baseURL } from "./baseURL";

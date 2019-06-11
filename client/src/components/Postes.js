@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { railsActions } from "redux-rails";
 import {
   CircularProgress,
   List,
@@ -12,6 +11,7 @@ import {
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 import _ from "lodash";
+import { fetchPostes } from "../actions/postesActions";
 
 const styles = theme => ({
   progress: {
@@ -33,16 +33,38 @@ const styles = theme => ({
 class Postes extends Component {
   static propTypes = {
     fetchPostes: PropTypes.func,
-    postes: PropTypes.array,
-    loading: PropTypes.bool
+    postes: PropTypes.object
   };
 
+  _isMounted = false;
+
+  state = {
+    loading: false
+  };
+
+  componentWillMount() {
+    this._isMounted = true;
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   componentDidMount() {
-    this.props.fetchPostes();
+    this.fetchPostes();
+  }
+
+  fetchPostes() {
+    if (this.state.loading) return null;
+    this.setState({ loading: true });
+    this.props.fetchPostes().then(() => {
+      this._isMounted && this.setState({ loading: false });
+    });
   }
 
   render() {
-    const { classes, loading, postes } = this.props;
+    const { classes, postes } = this.props;
+    const { loading } = this.state;
 
     if (loading) {
       return (
@@ -58,9 +80,9 @@ class Postes extends Component {
           {_.map(postes, poste => (
             <ListItem key={poste.id}>
               <ListItemText
-                className={classes.text}
                 inset
-                primary={poste.attributes.category}
+                className={classes.text}
+                primary={poste.category}
               />
             </ListItem>
           ))}
@@ -68,8 +90,8 @@ class Postes extends Component {
         <Typography className={classes.todo}>
           <em>
             TODO pour aller plus loin :<br />
-            Suivi journalier du nombre de pièces traitées pour chaque poste
-            (tout opérateur confondu)
+            Comparaison du nombre de pièces traitées quotidiennement sur les X
+            derniers jours
           </em>
         </Typography>
       </div>
@@ -77,21 +99,12 @@ class Postes extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  postes: state.Postes.models,
-  loading: state.Postes.loading
-});
-
-const mapDispatchToProps = dispatch => ({
-  fetchPostes: () => {
-    dispatch(railsActions.index({ resource: "Postes" }));
-  }
-});
+const mapStateToProps = ({ postesReducer: postes }) => ({ postes });
 
 export default compose(
   connect(
     mapStateToProps,
-    mapDispatchToProps
+    { fetchPostes }
   ),
   withStyles(styles)
 )(Postes);

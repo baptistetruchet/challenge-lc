@@ -1,11 +1,5 @@
-import { createStore, applyMiddleware, compose } from "redux";
-import { middleWare, apiReducer } from "redux-rails";
-import { apiConfig } from "../config";
+import { createStore, applyMiddleware } from "redux";
+import reduxThunk from "redux-thunk";
+import reducers from "../reducers";
 
-const store = createStore(
-  apiReducer(apiConfig),
-  {},
-  compose(applyMiddleware(middleWare(apiConfig)))
-);
-
-export default store;
+export default createStore(reducers, {}, applyMiddleware(reduxThunk));
