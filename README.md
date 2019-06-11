@@ -37,7 +37,7 @@ Il y a trois étapes avant l'envoi d'une pièce qui correspondent aux trois *Pos
 - le _checking_ où un opérateur contrôle la qualité des pièces
 - le _packing_ où un opérateur empacte la pièce et imprime le bordereau pour l'envoi
 
-Un opérateur (_Operator_) peut changer de poste pendant la journée suivant les besoins.
+Au début de la journée, un opérateur (_Operator_) est affecté à un _Poste_ (Nous créons à ce moment-là en base de données l'_OperatorPoste_ correspondant).
 
 ### Travail demandé
 
