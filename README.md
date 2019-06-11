@@ -29,7 +29,7 @@ npm start
 
 ### Description du projet
 
-Nous sommes une entreprise d'envoi de vêtements. Notre catalogue se compose de plusieurs produits (_Product_). Nous avons un certain nombre de pièces pour chaque produit (_Item_).
+Nous sommes une entreprise d'envoi de vêtements. Notre catalogue se compose de plusieurs produits (_Product_). Nous avons un certain nombre de pièces pour chaque produit (_Item_). Par exemple, nous avons dans notre catalogue le **produit** Robe Rouge, et dans nos stocks nous avons 20 **items** (ou 20 **pièces**) correspondant à ce produit.
 
 Il y a trois étapes avant l'envoi d'une pièce qui correspondent aux trois *Poste*s logistiques :
 
@@ -41,18 +41,17 @@ Un opérateur (_Operator_) peut changer de poste pendant la journée suivant les
 
 ### Travail demandé
 
-_L'énoncé est volontairement très succinct. Nous souhaitons vous laisser le maximum de liberté sur les choix techniques. Si les choix effectués dans le boilerplate de l'application ne vous conviennent pas, vous êtes libres et incités à les changer._
+_L'énoncé est volontairement très succinct. Nous souhaitons vous laisser le maximum de liberté sur les choix techniques. Si les choix effectués dans le boilerplate de l'application ne vous conviennent pas, vous êtes libres de les changer._
 
-Nous aimerions pouvoir tracker quel opérateur a réalisé telle action sur une pièce avant son envoi. A la fin de la journée, chaque opérateur se verra attribuer automatiquement un certain nombre de points suivant le nombre de pièces qu'il a traité. Un opérateur peut suivre l'évolution de ses points dans un dashboard personnel.
+Nous aimerions mieux suivre les opérations.
+Pour cela nous avons besoin de tracker le plus précisément possible chaque étape logistique (c'est-à-dire, à partir de la lecture de la base de donnée, pouvoir récupérer l'information _telle pièce a été pické par X, checké par Y et n'a pas encore été packé_ par exemple). (Il n'est pas nécessaire d'implémenter la partie FRONT sur cette partie, une fois la solution élaborée en BACK, seedez là pour la suite de l'exercise)
 
-Ce qu'il n'est pas nécessaire de faire :
-
-- Toute la partie logistique (ou comment réellement picker / checker / packer une pièce). Une fois la solution élaborée, seedez là
-- L'authentification avant d'arriver à son dashboard personnel
+A la fin de la journée, chaque opérateur se verra attribuer *automatiquement* un certain nombre de points suivant le nombre de pièces qu'il a traité. Un opérateur peut suivre l'évolution de ses points dans un dashboard personnel.
 
 ### Allez plus loin
 
-_Cette section n'est absolument pas nécessaire à la résolution du test. Voici quelques idées néamoins si vous voulez en faire plus._
+_Cette section n'est pas nécessaire à la résolution du test. Voici quelques idées néamoins si vous voulez en faire plus._
 
-- Refacto de certaines parties du code (notamment les composants front `Operators.js` & `Postes.js`)
-- Suivi de l'évolution journalière du nombre de pièces pickées / checkées / packées
+- Refacto, toujours plus de refacto ...
+- Si la réponse à la question "Est-ce que ma solution marche toujours si je rajoute une 4ème étape logisique ?" est non, faire en sorte qu'elle le devienne !
+- La partie FRONT pour qu'un opérator puisse en direct _picker_, _checker_ ou _packer_ une pièce
