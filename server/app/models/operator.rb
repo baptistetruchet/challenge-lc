@@ -7,10 +7,4 @@ class Operator < ApplicationRecord
   def name
     "#{first_name} #{last_name}"
   end
-
-  def to_builder
-    Jbuilder.new do |operator|
-      operator.(self, :id, :name)
-    end
-  end
 end
