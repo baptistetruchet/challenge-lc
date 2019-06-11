@@ -44,9 +44,10 @@ Un opérateur (_Operator_) peut changer de poste pendant la journée suivant les
 _L'énoncé est volontairement très succinct. Nous souhaitons vous laisser le maximum de liberté sur les choix techniques. Si les choix effectués dans le boilerplate de l'application ne vous conviennent pas, vous êtes libres de les changer._
 
 Nous aimerions mieux suivre les opérations.
-Pour cela nous avons besoin de tracker le plus précisément possible chaque étape logistique (c'est-à-dire, à partir de la lecture de la base de donnée, pouvoir récupérer l'information _telle pièce a été pické par X, checké par Y et n'a pas encore été packé_ par exemple). (Il n'est pas nécessaire d'implémenter la partie FRONT sur cette partie, une fois la solution élaborée en BACK, seedez là pour la suite de l'exercise)
+Pour cela nous avons besoin de tracker le plus précisément possible chaque étape logistique (c'est-à-dire, à partir de la lecture de la base de données, pouvoir récupérer l'information _telle pièce a été pické par X, checké par Y et n'a pas encore été packé_ par exemple).  
+Il n'est pas nécessaire d'implémenter la partie FRONT sur cette partie, une fois la solution élaborée en BACK, seedez là pour la suite de l'exercice.
 
-A la fin de la journée, chaque opérateur se verra attribuer *automatiquement* un certain nombre de points suivant le nombre de pièces qu'il a traité. Un opérateur peut suivre l'évolution de ses points dans un dashboard personnel.
+A la fin de la journée, chaque opérateur se verra attribuer _automatiquement_ un certain nombre de points suivant le nombre de pièces qu'il a traité. Un opérateur peut suivre l'évolution de ses points dans un dashboard personnel.
 
 ### Allez plus loin
 
