@@ -43,8 +43,8 @@ Au début de la journée, un opérateur (_Operator_) est affecté à un _Poste_ 
 
 _L'énoncé est volontairement très succinct. Nous souhaitons vous laisser le maximum de liberté sur les choix techniques. Si les choix effectués dans le boilerplate de l'application ne vous conviennent pas, vous êtes libres de les changer._
 
-Votre CEO adoré aimerait mieux suivre les opérations et vous demande d'imaginer puis d'implementer une solution.
-Plus précisément, il voudrait tracker le plus précisément possible chaque étape logistique (c'est-à-dire, à partir de la lecture de la base de données, pouvoir récupérer l'information _telle pièce a été pické par X, checké par Y et n'a pas encore été packé_ par exemple).  
+Votre CEO adoré aimerait mieux suivre les opérations et vous demande d'imaginer puis d'implementer une solution.  
+Plus exactement, il voudrait tracker le plus précisément possible chaque étape logistique (c'est-à-dire, à partir de la lecture de la base de données, pouvoir récupérer l'information _telle pièce a été pické par X, checké par Y et n'a pas encore été packé_ par exemple).  
 
 Il n'est pas nécessaire d'implémenter la partie FRONT sur cette partie, une fois la solution élaborée en BACK, seedez là pour la suite de l'exercice.  
 
